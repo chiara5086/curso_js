@@ -1,11 +1,5 @@
 //Ciclos
 
-/*let transactionNumber = prompt("Ingresar cantidad de productos que desea comprar. Ingrese ESC para terminar");
-
-while (transactionNumber !== ESC) {
-    alert("El usuario ingresó "+transactionNumber);
-}*/
-
 let prod;
 let numero = 0;
 let ans;
