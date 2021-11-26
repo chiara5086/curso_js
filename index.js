@@ -3,34 +3,22 @@
 // ||
 
 
-let edad = prompt("Introducí tu edad");
+let edad = prompt("Introducí tu edad, para saber si tenés un descuento en nuestra tienda");
 
-if (edad >= 1 && edad <= 17) {
-    alert("Usted es menor de edad");
+if (edad < 18) {
+    alert("Lo sentimos, no podemos darte un descuento");
 } 
-else if (edad >= 18 && edad <= 39) {
-    alert("Usted es una persona joven adulta");
-} 
-else if (edad >= 40 && edad <= 64) {
-    alert("Usted es una persona adulta");
-} 
-else if (edad >= 64) {
-    alert("Usted es una persona que pertenece al grupo de adultos mayores");
+else if (edad > 18 && edad < 25) {
+    alert("Felicitaciones, tenés un descuento del 10%!");
 }
+else if (edad > 25) {
+    alert("Lo sentimos, pero no tenés descuento")
+}
+else if (edad == 18 || edad == 25) {
+    alert("Felicitaciones, tenés un descuento especial del 20%!");
+} 
 else if (edad == null || edad == ""){
     alert("Has cancelado o introducido tu edad vacía");
-}
-
-//Operadores de orden
-
-let n1 = prompt("Escribí un número");
-let n2 = prompt("Escribí otro número");
-
-if (n1 > n2) {
-    alert("El número mayor es: "+n1);
-}
-else {
-    if (n1 == n2)  alert("Los números son iguales"); 
 }
 
 //Operadores lógicos
