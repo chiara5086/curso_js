@@ -1,0 +1,71 @@
+@charset "UTF-8";
+section {
+  margin: 50px; }
+
+.margin-imagenes {
+  margin: 50px; }
+
+main {
+  margin: 30px; }
+
+tr {
+  justify-content: center; }
+
+header {
+  font-family: Pacifico;
+  font-size: 40px;
+  margin: 20px;
+  animation-duration: 2s;
+  animation-name: aparecer; }
+
+.footer__link {
+  color: #dfc4c4; }
+
+.botonverproductos {
+  color: #dfc4c4;
+  background-color: #792d68; }
+
+.padding {
+  padding: 30px; }
+
+.padding_div {
+  padding: 100vh; }
+
+.img-responsive {
+  max-width: 100%;
+  height: auto; }
+
+/*fondo de la fila 1 de la tabla de la página de preguntas frecuentes*/
+.titulotabla {
+  background-color: #77274b; }
+
+/*BUCLE*/
+h1 {
+  color: #e18fff; }
+
+h2 {
+  color: #e18fff; }
+
+h3 {
+  color: #e18fff; }
+
+/*CONDICIONAL*/
+body {
+  background-image: linear-gradient(315deg, #42378f 0%, #f53844 74%); }
+
+/*EACH*/
+nav {
+  background-color: #792d68; }
+
+footer {
+  background-color: #792d68; }
+
+/***************** Animaciones, transformaciones y transiciones ****************/
+img:hover {
+  filter: opacity(0.5); }
+
+@keyframes aparecer {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
