@@ -4,7 +4,6 @@
 
 
 let edad = prompt("Introducí tu edad, para saber si tenés un descuento en nuestra tienda");
-age = parseInt(age);
 
 if (edad < 18) {
     alert("Lo sentimos, no podemos darte un descuento");
