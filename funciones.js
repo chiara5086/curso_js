@@ -38,8 +38,9 @@ do {
             break;
     }
     numero = parseInt(prompt("¿Cuántos "+ prod +" desea comprar?"));
+    alert ("Los " + numero +" productos ingresados ("+prod+") cuestan $"+ calcularValor(numero,valorProd(prod)));
     total = total+(calcularValor(numero,valorProd(prod) ));
-    alert ("El costo total es: $"+ total);
-    ans = prompt("Si desea continuar con las compras ingrese sí"); 
+    alert ("El costo total de todos los productos ingresados hasta ahora es: $"+ total);
+    ans = prompt("Si desea continuar agregando productos a su compra, ingrese sí"); 
 } while (ans == "si");
 alert ("Gracias por su compra!");
