@@ -67,8 +67,8 @@
         <h1>Todos los productos</h1>                     
         </header>
         <h2>Información del producto que desea comprar</h2>
-        <div>Nombre: </div> <span id="nombre"></span>
-        <div>Precio final: </div> <span id="precioFinal"></span>
+        <div id="infoProd"></div>
+        <div>Precio final (con IVA): </div> <span id="precioFinal">0</span>
         <main>
           <!-- inicio contenido principal -->
           <section class="text-center">            
@@ -79,7 +79,7 @@
                 <div class="card">
                   <img src="https://64.media.tumblr.com/25a3216e7105b8f8e295c44cd9c456e9/862199eb6fd1646a-ee/s1280x1920/1add709aa8c458a8b50dc3bb61082a1b3475cfbe.jpg" class="card-img-top img-responsive" alt="cuadro pintado a mano negro con estrellas blancas, arcoiris, dos manos claras y frase de focus on your own happines">
                   <div class="card-body">
-                  <a href="compra.html" class="btn btn-primary">Comprar</a>
+                  <a id="cuadro" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
               </div>
                 </div>
                   </div>
@@ -87,7 +87,7 @@
                 <div class="card">
                   <img src="https://64.media.tumblr.com/386c295ba3730178ec95f12ef34d9210/0d0d68e9c5f5902e-f2/s1280x1920/cca6ee4237b9386e7f776c999c6da7d1baa6a51c.jpg" class="card-img-top img-responsive" alt="cuadro pintado a mano de mujer de pelo rojo y largo con hongo rojo en la cabeza, hojas verdes alrededor y estrellas blancas">
                   <div class="card-body">
-                  <a href="compra.html" class="btn btn-primary">Comprar</a>
+                  <a id="cuadro" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
               </div>
                 </div>
                   </div>
@@ -95,7 +95,7 @@
                 <div class="card">
                   <img src="https://64.media.tumblr.com/a35b7f6ce60ced7563987460385a70dc/0d0d68e9c5f5902e-26/s1280x1920/46250329967eb32e6a90d970ab0bb66ac233ae90.jpg" class="card-img-top img-responsive" alt="cuadro pintado a mano de dos manos alrededor de una luna con detalles de hojas verdes y mariposas alrededor">
                   <div class="card-body">
-                  <a href="compra.html" class="btn btn-primary">Comprar</a>
+                  <a id="cuadro" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
               </div>
                 </div>
                   </div>
@@ -107,7 +107,7 @@
                 <div class="card">
                   <img src="https://64.media.tumblr.com/d33010a04e4e27b1b0dd7d7e9d63b1e8/ef40e8e7d1b5de1c-0a/s640x960/a82288b9fb2c5956bdb83adebdc80f3042c36b66.jpg" class="card-img-top img-responsive" alt="cuadro pintado a mano de una pareja en un bosque dirigiendose a una puerta donde se visualiza un cielo azul y rosa con estrellas">
                   <div class="card-body">
-                  <a href="compra.html" class="btn btn-primary">Comprar</a>
+                  <a id="cuadro" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
               </div>
                 </div>
                   </div>
@@ -115,7 +115,7 @@
                 <div class="card">
                   <img src="https://64.media.tumblr.com/4dc55dac10b955dee0079a0423588718/ef40e8e7d1b5de1c-0c/s640x960/8625b34917cea6f7b08a2966e694e71d786df4b4.jpg" class="card-img-top img-responsive" alt="cuadro pintado a mano de una pareja sentada en un café junto a un gato naranja y una ventana donde se ve un arbol grande naranja">
                   <div class="card-body">
-                  <a href="compra.html" class="btn btn-primary">Comprar</a>
+                  <a id="cuadro" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
               </div>
                 </div>
                   </div>
@@ -123,7 +123,7 @@
                 <div class="card">
                   <img src="https://64.media.tumblr.com/926222bc85f828186a03ef13c2f4d295/ef40e8e7d1b5de1c-41/s640x960/531beae988272fa0aff7e25bdbfca589ebd9e538.jpg" class="card-img-top img-responsive" alt="cuadro pintado a mano de una mujer sentada en un banco de plaza bajo la lluvie viendo la ciudad con edificios y luces">
                   <div class="card-body">
-                  <a href="compra.html" class="btn btn-primary">Comprar</a>
+                  <a id="cuadro" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
               </div>
                 </div>
                   </div>                  
@@ -135,7 +135,7 @@
             <div class="card">
               <img src="https://64.media.tumblr.com/80fb613e7c592be45e62a12deebbf8b1/03bc87547c6945ed-1c/s1280x1920/3c920034f150bba73f3a7631389965bbad1f939e.jpg" class="card-img-top img-responsive" alt="bol de cerámica pintado a mano con montañas en tonos rosados y bordó con pochoclos y una mano agarrándolos">
               <div class="card-body">
-              <a href="compra.html" class="btn btn-primary">Comprar</a>
+              <a id="bol" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
           </div>
             </div>
               </div>
@@ -143,7 +143,7 @@
             <div class="card">
               <img src="https://64.media.tumblr.com/0c5801ed89fb5edf8458c11b79940132/03bc87547c6945ed-de/s1280x1920/453079810cb3d43de2cf649dbe89b67e70309cde.jpg" class="card-img-top img-responsive" alt="bols de cerámica pintados a mano con montañas de diversos colores y sol y luna arriba">
               <div class="card-body">
-              <a href="compra.html" class="btn btn-primary">Comprar</a>
+              <a id="bol" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
           </div>
             </div>
               </div>
@@ -151,7 +151,7 @@
             <div class="card">
               <img src="https://64.media.tumblr.com/8ad4bbb5f328b5935ec2c03e980f1f73/03bc87547c6945ed-0d/s1280x1920/cd43f6cc6540f886729fc8927973d5cffd65ed6b.jpg" class="card-img-top img-responsive" alt="tazas y pava de cerámica pintadas a mano con imágenes de montañas en tonos anaranjados y azules con sol y luna arriba">
               <div class="card-body">
-              <a href="compra.html" class="btn btn-primary">Comprar</a>
+              <a id="taza" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
           </div>
             </div>
               </div>
@@ -163,7 +163,7 @@
             <div class="card">
               <img src="https://64.media.tumblr.com/54ca2c688dcdcf8d75e2f05686a6eb07/03bc87547c6945ed-57/s1280x1920/0c06f872c932e4ff19cd7ffc24c4c19295d8f33a.jpg" class="card-img-top img-responsive" alt="bols de cerámica color marrón pintados a mano con montañas en tonalidades naranjas y sol, rellenos de cereales de colores y leche cayendo">
               <div class="card-body">
-              <a href="compra.html" class="btn btn-primary">Comprar</a>
+              <a id="bol" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
           </div>
             </div>
               </div>
@@ -171,7 +171,7 @@
             <div class="card">
               <img src="https://64.media.tumblr.com/3048f0ec8b1ef9ec966bdee4165d1508/03bc87547c6945ed-29/s1280x1920/58b666d95eece0efc79136fe873940556b198c6a.jpg" class="card-img-top img-responsive" alt="estantes con tazas y bols de cerámica color marrón claro con montañas en tonos azules, rosados y grises con luna arriba">
               <div class="card-body">
-              <a href="compra.html" class="btn btn-primary">Comprar</a>
+              <a id="taza" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
           </div>
             </div>
               </div>
@@ -179,7 +179,7 @@
             <div class="card">
               <img src="https://64.media.tumblr.com/ebc9df6aaad22507266e3f80ad77add3/03bc87547c6945ed-e1/s1280x1920/e0b5d5fd7aa2e675c16dc6a1e27a01f550571cf6.jpg" class="card-img-top img-responsive" alt="taza de cerámica marrón pintada a mano con montañas en tonos verdes y sol en tono rosado">
               <div class="card-body">
-              <a href="compra.html" class="btn btn-primary">Comprar</a>
+              <a id="taza" onclick="muestra(this.id);" class="btn btn-primary">Comprar</a>
           </div>
             </div>
               </div>                  
@@ -222,7 +222,7 @@
 
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-        <script src="array.js"></script>
+        <script src="claseDOM.js"></script>
 
     </body>
 </html>
