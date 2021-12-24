@@ -1,25 +1,44 @@
 // Clase EVENTOS
 
-let cuadro = document.getElementById("cuadro");
-let taza = document.getElementById("taza");
-let bol = document.getElementById("bol");
+let cuadros = document.getElementsByClassName("cuadro");
+let tazas = document.getElementsByClassName("taza");
+let bols = document.getElementsByClassName("bol");
 
-cuadro.onclick = function() {
-    muestra(this.id);
+for (let i = 0; i < cuadros.length; i++) {
+    let cuadro = document.getElementById(cuadros[i].id);
+    cuadro.onclick = function() {
+        muestra(cuadros[i].id);
+    }
+} 
+
+for (let i = 0; i < tazas.length; i++) {
+    let taza = document.getElementById(tazas[i].id);
+    taza.onclick = function() {
+        muestra(tazas[i].id);
+    }
 }
 
-taza.onclick = function() {
-    muestra(this.id);
-}
-
-bol.onclick = function() {
-    muestra(this.id);
-}
-
+for (let i = 0; i < bols.length; i++) {
+    let bol = document.getElementById(bols[i].id);
+    bol.onclick = function() {
+        muestra(bols[i].id);
+    }
+} 
 
 function muestra(clicked_id) {
     alert("Se ha agregado un producto al carrito, lo puede ver reflejado arriba en la página")
-    const prodElegido = productos.filter(prod => prod.nombre == clicked_id); 
+
+    let pr = clicked_id.search("cuadro");
+    let buscado;
+    if (pr!=-1) buscado="cuadro";
+
+    pr = clicked_id.search("taza");
+    if (pr!=-1) buscado="taza";
+
+    pr = clicked_id.search("bol");
+    if (pr!=-1) buscado="bol";
+
+    const prodElegido = productos.filter(prod => prod.nombre == buscado); 
 
     let producto;
     prodElegido.forEach(p => producto=p)
