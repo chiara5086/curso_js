@@ -1,4 +1,21 @@
-// Clase DOM
+// Clase EVENTOS
+
+let cuadro = document.getElementById("cuadro");
+let taza = document.getElementById("taza");
+let bol = document.getElementById("bol");
+
+cuadro.onclick = function() {
+    muestra(this.id);
+}
+
+taza.onclick = function() {
+    muestra(this.id);
+}
+
+bol.onclick = function() {
+    muestra(this.id);
+}
+
 
 function muestra(clicked_id) {
     alert("Se ha agregado un producto al carrito, lo puede ver reflejado arriba en la página")
