@@ -66,6 +66,34 @@ function muestra(clicked_id) {
     }
 }
 
+const addNewTodoList = () =>{ 
+
+    tableTodo.innerHTML = "";
+    let tr;
+    
+    todoList.forEach((element,i) => {
+        tr = document.createElement('tr');
+        tr.setAttribute("id", i);
+        if(element.status === 'Realizado')
+            tr.setAttribute("class",'ready');
+
+        tr.innerHTML = `<td>
+                            <img src="img/${element.category}" alt="">
+                        </td>
+                        <td>${element.description}</td>
+                        <td>${element.date}</td>
+                        <td>${element.status}</td>
+                        <td>
+                            <img class="pointer" src="img/delete.png" onClick="deleteClick(${i})">
+                            <img class="pointer" src="img/check.png" onClick="checkClick(${i})">
+                        </td>`;
+
+        tableTodo.appendChild(tr);
+    });
+
+   
+}
+
 const productos = [];
 productos.push(new Producto(1,"cuadro", "3000"));
 productos.push(new Producto(2,"taza", "1000"));
@@ -86,3 +114,7 @@ for (const producto of productos) {
 
 }
 document.getElementById("infoProd").innerHTML=(contenedor.innerHTML);
+
+let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+
+if(todoList.length > 0) addNewTodoList();
