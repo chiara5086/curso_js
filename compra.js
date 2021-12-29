@@ -41,6 +41,9 @@ function muestra(clicked_id) {
     const prodElegido = productos.filter(prod => prod.nombre == buscado); 
 
     let producto;
+
+    addCompra(prodElegido);
+
     prodElegido.forEach(p => producto=p)
     
     let subtot = document.getElementById("precioFinal").innerHTML;
@@ -49,16 +52,16 @@ function muestra(clicked_id) {
     
     else{let valor = parseInt(subtot)+ producto.sumaIva();
 
-        document.getElementById("precioFinal").innerHTML = valor}
-    let subc = document.getElementById(producto.id).innerHTML;
-    document.getElementById(producto.id).innerHTML = parseInt(subc)+1;   
+    document.getElementById("precioFinal").innerHTML = valor}
+
   }
 
   class Producto {
-    constructor(id,nombre,precio) {
+    constructor(id,nombre,precio,cantidad) {
         this.nombre = nombre;
         this.precio = precio;
         this.id=id;
+        this.cantidad=cantidad;
     }
     sumaIva() {
         let calculate =  this.precio * 1.21;
@@ -66,55 +69,98 @@ function muestra(clicked_id) {
     }
 }
 
-const addNewTodoList = () =>{ 
 
-    tableTodo.innerHTML = "";
+const productos = [];
+productos.push(new Producto(1,"cuadro", "3000",0));
+productos.push(new Producto(2,"taza", "1000",0));
+productos.push(new Producto(3,"bol", "600",0));
+
+const addCompra = (prodElegido) =>{
+    let producto;
+    prodElegido.forEach(p => producto=p);
+    let productos;
+    localStorage.getItem('compraList') ?
+    productos = JSON.parse(localStorage.getItem("compraList"))
+    :
+    productos  = 0;
+    
+    if (productos==0 ){
+        let id = producto.id;
+        let nombre = producto.nombre;
+        let precio = producto.precio;
+        producto.cantidad=producto.cantidad+1;
+        let cantidad = producto.cantidad;
+        let newCompra = new Producto(id, nombre,precio,cantidad);
+        compraList.push(newCompra);
+        localStorage.setItem("compraList",JSON.stringify(compraList));
+        addNewCompraList();
+    }else{
+        let productos2;
+        let index = productos.findIndex(item => item.id === producto.id);
+        if (producto.cantidad>0){
+            compraList.splice(index, 1);
+            
+            producto.cantidad=producto.cantidad+1;
+        } else{
+            
+            producto.cantidad=producto.cantidad+1;
+        }
+        let newCompra = new Producto(producto.id, producto.nombre,producto.precio,producto.cantidad);
+        compraList.push(newCompra);
+        localStorage.setItem("compraList",JSON.stringify(compraList));
+        addNewCompraList();
+    }
+  
+
+    
+
+
+}
+
+
+const addNewCompraList = () =>{ 
+
+    tableCompra.innerHTML = "";
     let tr;
     
-    todoList.forEach((element,i) => {
+    compraList.forEach((element,i) => {
         tr = document.createElement('tr');
         tr.setAttribute("id", i);
-        if(element.status === 'Realizado')
-            tr.setAttribute("class",'ready');
-
+        
         tr.innerHTML = `<td>
-                            <img src="img/${element.category}" alt="">
+                            <img src="img/shopping.png" alt="">
                         </td>
-                        <td>${element.description}</td>
-                        <td>${element.date}</td>
-                        <td>${element.status}</td>
+                        <td>${element.nombre}</td>
+                        <td>${element.precio}</td>
+                        <td id=${element.nombre+element.id} >${element.cantidad}</td>
                         <td>
                             <img class="pointer" src="img/delete.png" onClick="deleteClick(${i})">
-                            <img class="pointer" src="img/check.png" onClick="checkClick(${i})">
+
                         </td>`;
 
-        tableTodo.appendChild(tr);
+        tableCompra.appendChild(tr);
     });
 
    
 }
 
-const productos = [];
-productos.push(new Producto(1,"cuadro", "3000"));
-productos.push(new Producto(2,"taza", "1000"));
-productos.push(new Producto(3,"bol", "600"));
-
-
-
-let contenedor = document.createElement("div");
-
-for (const producto of productos) {
+deleteClick = (index) =>{
     
-    //Definimos el innerHTML del elemento con una plantilla de texto
-
-    contenedor.innerHTML +=  `<p>Producto: ${producto.nombre} - Precio:<b> $${producto.precio}</b> -
-                            Cantidad: <span id=${producto.id}>0</span></p>`;
-                            
-                            
+    
+    let prod=compraList.splice(index, 1);
+    const prodElegido = productos.filter(p => p.nombre == prod[0].nombre); 
+    let producto;
+    prodElegido.forEach(p => producto=p);
+    let subtot = document.getElementById("precioFinal").innerHTML;
+    let valor = parseInt(prod[0].cantidad)*producto.sumaIva();
+    document.getElementById("precioFinal").innerHTML = subtot-(valor);
+    producto.cantidad=0;
+    localStorage.setItem("compraList",JSON.stringify(compraList));
+    addNewCompraList();
 
 }
-document.getElementById("infoProd").innerHTML=(contenedor.innerHTML);
 
-let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
 
-if(todoList.length > 0) addNewTodoList();
+let compraList = JSON.parse(localStorage.getItem("compraList")) || [];
+
+if(compraList.length > 0) addNewCompraList();
