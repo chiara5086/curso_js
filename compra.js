@@ -71,6 +71,16 @@ class Producto {
     }
 }
 
+class PeliculasHP {
+    constructor(id, nombre) {
+        this.nombre = nombre;
+        this.id = id;
+    }
+}
+
+const peliculasHP = [];
+
+
 
 const productos = [];
 productos.push(new Producto(1, "cuadro", "3000", 0));
@@ -119,11 +129,25 @@ const addCompra = (prodElegido) => {
 
 }
 
+const getPeliculaHP = () =>{
+    let URLGET = "https://the-fantasy-api.herokuapp.com/api/v1/movies/harry-potter/";
+    $.get(URLGET, function (respuesta, estado) {
+        if(estado === "success"){
+          let misDatos = respuesta.data.results;
+          for (const dato of misDatos) {
+          peliculasHP.push(new PeliculasHP(dato.id, dato.title));                              
+          }  
+        }else{
+          console.log(estado)
+        }
+  });
+  }
+
+getPeliculaHP();
 
 const addNewCompraList = () =>{ 
     $("#tableCompra").html("");
     compraList.forEach((element,i) => {
-
     $("#tableCompra").append(`<tr id="${i}"><td>
                             <img src="img/shopping.png" alt="">
                             </td>
@@ -131,10 +155,22 @@ const addNewCompraList = () =>{
                             <td>${element.precio}</td>
                             <td id=${element.nombre + element.id} >${element.cantidad}</td>
                             <td>
+                            <select id="selectHP" class="form-select" aria-label="Default select example">
+                                <option selected>Elegir Película</option>
+                            </select>
+                            </td>
+                            <td>
                             <img class="pointer" src="img/delete.png" >
 
                             </td></tr>`);                         
 })
+compraList.forEach((element) => {
+    peliculasHP.forEach((elemento,i) => {
+       $("#selectHP").append(`<option value="${i}">${elemento.nombre}</option>`)
+        console.log(elemento.nombre)
+    });
+});
+
 }
 
 $(document).on('click','.pointer', function(){
