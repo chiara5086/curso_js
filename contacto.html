@@ -17,6 +17,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
         
     </head>
     <body>
@@ -32,16 +33,8 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
                   </li>                  
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Productos
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="productos.html">Todos los productos</a></li>
-                      <li><a class="dropdown-item" href="productos1.html">Cuadros</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="productos2.html">Tazas y bols</a></li>
-                    </ul>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="tienda.html">Tienda</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="historia.html">Historia</a>
@@ -54,8 +47,7 @@
                   </li>
                 </ul>
                 <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
+                  <a href="compra.html"><i class="bi bi-cart"></i></a>
                 </form>
               </div>
             </div>
@@ -69,62 +61,56 @@
         <h2 class="text-center">Para contactarte, completá el siguiente formulario.</h2>
         <p class="text-center">Nos contactaremos a la brevedad.</p>
         <main>
-          <!--inicio contenido principal-->
-          <h3>Datos personales</h3>
-          <!--pedido de nombre y apellido-->
-          <div class="row g-3">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Nombre/s" aria-label="First name">
+          <!--inicio de formulario-->
+          <!--pedido nombre y apellido y mail-->
+          <form class="row g-4 needs-validation" novalidate>
+            <h3>Datos de contacto</h3>
+            <div class="col-md-2">
+              <label for="validationCustom01" class="form-label">Nombre/s</label>
+              <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre/s" required>
+              <div class="valid-feedback">
+                Correcto
+              </div>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Apellido/s" aria-label="Last name">
+            <div class="col-md-2">
+              <label for="validationCustom02" class="form-label">Apellido/s</label>
+              <input type="text" class="form-control" id="validationCustom02" placeholder="Apellido/s" required>
+              <div class="valid-feedback">
+                Correcto
+              </div>
             </div>
-          </div>         
-          <!--cnosulta genero-->
-          <h4>Género</h4>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-              Femenino
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-              Masculino
-            </label>
+            <div class="col-md-3">
+              <label for="validationCustom03" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="validationCustom03" placeholder="ejemplo@correo.com" required>
+              <div class="valid-feedback">
+                Correcto
+              </div>
             </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-              Otro
-            </label>
           </div>
-          <h3>Datos de contacto</h3>
-          <!--pedido de telefono, mail y contraseña-->
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email</label>
-          </div>
-          <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Contraseña</label>
-          </div>
-          <h3>Motivo de consulta</h3>
-          <!--desplegable para motivo de consulta-->
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Seleccioná el motivo de tu consulta</option>
-            <option value="consulta">Consulta</option>
-            <option value="pedido">Pedido personalizado</option>
-            <option value="reclamo">Reclamo</option>
-          </select>
+          <!--motivo de consulta-->
+           <div class="mb-3">
+            <select class="form-select" required aria-label="select example">
+              <option value="">Seleccioná el motivo de tu consulta</option>
+              <option value="1">Consulta</option>
+              <option value="2">Pedido personalizado</option>
+              <option value="3">Reclamo</option>
+            </select>
+            <div class="invalid-feedback">Seleccioná una opción</div>
+          </div>   
+          
           <h3>Dejá tu mensaje:</h3>
           <!--cuadro para dejar mensaje-->
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Mensaje</label>
+          <div class="mb-3">
+            <label for="validationTextarea" class="form-label">Mensaje</label>
+            <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Escribí tu mensaje" required></textarea>
+            <div class="invalid-feedback">
+              Ingresá tu mensaje.
+            </div>
+          </div>   
+          
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
           </div>
-          <input type="submit" value="Enviar mensaje"/>
 
             <!-- fin contenido principal -->
         </main> 
@@ -135,14 +121,8 @@
                 <a class="nav-link active footer__link" aria-current="page" href="index.html">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link footer__link" href="productos.html">Todos los productos</a>
+                <a class="nav-link footer__link" href="tienda.html">Tienda</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link footer__link" href="productos1.html">Cuadros</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link footer__link" href="productos2.html">Tazas y bols</a>
-                </li>
               <li class="nav-item">
                 <a class="nav-link footer__link" href="historia.html">Historia</a>
               </li>
@@ -159,6 +139,8 @@
           </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="contacto.js"></script>
 
     </body>
 </html>

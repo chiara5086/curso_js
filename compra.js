@@ -1,4 +1,24 @@
 // Clase JQuery
+class Producto {
+    constructor(id, nombre, precio, cantidad) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.id = id;
+        this.cantidad = cantidad;
+    }
+    sumaIva() {
+        let calculate = this.precio * 1.21;
+        return calculate
+    }
+}
+
+const productos = [];
+productos.push(new Producto(1, "cuadro", "3000", 0));
+productos.push(new Producto(2, "taza", "1000", 0));
+productos.push(new Producto(3, "bol", "600", 0));
+
+
+
 
 let cuadros = document.getElementsByClassName("cuadro");
 let tazas = document.getElementsByClassName("taza");
@@ -26,7 +46,7 @@ for (let i = 0; i < bols.length; i++) {
 }
 
 function muestra(clicked_id) {
-    alert("Se ha agregado un producto al carrito, lo puede ver reflejado arriba en la página")
+    alert("Se ha agregado el producto. Podés visualizar tu compra en el carrito de arriba a la derecha!")
 
     let pr = clicked_id.search("cuadro");
     let buscado;
@@ -45,47 +65,19 @@ function muestra(clicked_id) {
     addCompra(prodElegido);
 
     prodElegido.forEach(p => producto = p)
+    
+    let subtot=localStorage.getItem("compraValorIva");
 
-    let subtot = document.getElementById("precioFinal").innerHTML;
-
-    if (subtot == 0) { document.getElementById("precioFinal").innerHTML = producto.sumaIva(); }
-
+    if(subtot == null ||subtot==0 ) {
+         let sub= producto.sumaIva()
+         localStorage.setItem("compraValorIva", sub);
+        }
     else {
         let valor = parseInt(subtot) + producto.sumaIva();
-
-        document.getElementById("precioFinal").innerHTML = valor
-    }
-
-}
-
-class Producto {
-    constructor(id, nombre, precio, cantidad) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.id = id;
-        this.cantidad = cantidad;
-    }
-    sumaIva() {
-        let calculate = this.precio * 1.21;
-        return calculate
+        localStorage.setItem("compraValorIva", valor);
+      
     }
 }
-
-class PeliculasHP {
-    constructor(id, nombre) {
-        this.nombre = nombre;
-        this.id = id;
-    }
-}
-
-const peliculasHP = [];
-
-
-
-const productos = [];
-productos.push(new Producto(1, "cuadro", "3000", 0));
-productos.push(new Producto(2, "taza", "1000", 0));
-productos.push(new Producto(3, "bol", "600", 0));
 
 const addCompra = (prodElegido) => {
     let producto;
@@ -105,7 +97,6 @@ const addCompra = (prodElegido) => {
         let newCompra = new Producto(id, nombre, precio, cantidad);
         compraList.push(newCompra);
         localStorage.setItem("compraList", JSON.stringify(compraList));
-        addNewCompraList();
     } else {
         let productos2;
         let index = productos.findIndex(item => item.id === producto.id);
@@ -120,76 +111,9 @@ const addCompra = (prodElegido) => {
         let newCompra = new Producto(producto.id, producto.nombre, producto.precio, producto.cantidad);
         compraList.push(newCompra);
         localStorage.setItem("compraList", JSON.stringify(compraList));
-        addNewCompraList();
     }
-
-
-
-
-
 }
-
-const getPeliculaHP = () =>{
-    let URLGET = "https://the-fantasy-api.herokuapp.com/api/v1/movies/harry-potter/";
-    $.get(URLGET, function (respuesta, estado) {
-        if(estado === "success"){
-          let misDatos = respuesta.data.results;
-          for (const dato of misDatos) {
-          peliculasHP.push(new PeliculasHP(dato.id, dato.title));                              
-          }  
-        }else{
-          console.log(estado)
-        }
-  });
-  }
-
-getPeliculaHP();
-
-const addNewCompraList = () =>{ 
-    $("#tableCompra").html("");
-    compraList.forEach((element,i) => {
-    $("#tableCompra").append(`<tr id="${i}"><td>
-                            <img src="img/shopping.png" alt="">
-                            </td>
-                            <td>${element.nombre}</td>
-                            <td>${element.precio}</td>
-                            <td id=${element.nombre + element.id} >${element.cantidad}</td>
-                            <td>
-                            <select id="selectHP" class="form-select" aria-label="Default select example">
-                                <option selected>Elegir Película</option>
-                            </select>
-                            </td>
-                            <td>
-                            <img class="pointer" src="img/delete.png" >
-
-                            </td></tr>`);                         
-})
-compraList.forEach((element) => {
-    peliculasHP.forEach((elemento,i) => {
-       $("#selectHP").append(`<option value="${i}">${elemento.nombre}</option>`)
-        console.log(elemento.nombre)
-    });
-});
-
-}
-
-$(document).on('click','.pointer', function(){
-    
-    var trId = $(this).closest('tr').attr('id'); // table row ID 
-    let prod = compraList.splice(trId, 1);
-    const prodElegido = productos.filter(p => p.nombre == prod[0].nombre);
-    let producto;
-    prodElegido.forEach(p => producto = p);
-    let subtot = document.getElementById("precioFinal").innerHTML;
-    let valor = parseInt(prod[0].cantidad) * producto.sumaIva();
-    document.getElementById("precioFinal").innerHTML = subtot - (valor);
-    producto.cantidad = 0;
-    localStorage.setItem("compraList", JSON.stringify(compraList));
-    addNewCompraList();
-
- });
 
 
 let compraList = JSON.parse(localStorage.getItem("compraList")) || [];
 
-if (compraList.length > 0) addNewCompraList();
